@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sample Table View Controller-->
+        <scene sceneID="YzV-id-a8G">
+            <objects>
+                <viewController id="Hhr-kI-wk9" customClass="SampleTableViewController" customModule="SNTPhotoInteractionAnimation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="svn-fB-2Yg"/>
+                        <viewControllerLayoutGuide type="bottom" id="nOt-T8-sqF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yoc-oh-eYI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="163" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8ZN-eH-NfU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SampleTableViewCell" rowHeight="163" id="wgh-82-JcA" customClass="SampleTableViewCell" customModule="SNTPhotoInteractionAnimation" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="163"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wgh-82-JcA" id="rLt-IZ-LMu">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUG-Og-Jyg">
+                                                    <rect key="frame" x="23" y="16" width="180" height="119.5"/>
+                                                    <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="180" id="Qii-F5-cm1"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="imageButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hmi-Yp-GH7"/>
+                                                        <action selector="imageButtonDidPress:" destination="wgh-82-JcA" eventType="touchUpInside" id="PQv-lk-s86"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OUG-Og-Jyg" secondAttribute="bottom" priority="750" constant="8" id="7YW-3m-mCW"/>
+                                                <constraint firstItem="OUG-Og-Jyg" firstAttribute="leading" secondItem="rLt-IZ-LMu" secondAttribute="leadingMargin" constant="15" id="Z3G-3E-8E1"/>
+                                                <constraint firstItem="OUG-Og-Jyg" firstAttribute="top" secondItem="rLt-IZ-LMu" secondAttribute="topMargin" constant="8" id="hb4-ll-h0v"/>
+                                                <constraint firstItem="OUG-Og-Jyg" firstAttribute="width" secondItem="OUG-Og-Jyg" secondAttribute="height" multiplier="2000:1333" id="smQ-Xk-J6B"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageButton" destination="OUG-Og-Jyg" id="dcg-Qg-154"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Hhr-kI-wk9" id="3BP-V8-ZBC"/>
+                                    <outlet property="delegate" destination="Hhr-kI-wk9" id="Ojv-Lo-HAs"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8ZN-eH-NfU" secondAttribute="trailing" id="FTy-ty-E1e"/>
+                            <constraint firstItem="8ZN-eH-NfU" firstAttribute="leading" secondItem="yoc-oh-eYI" secondAttribute="leading" id="Gtu-iY-tGa"/>
+                            <constraint firstItem="nOt-T8-sqF" firstAttribute="top" secondItem="8ZN-eH-NfU" secondAttribute="bottom" id="nKI-PQ-lKB"/>
+                            <constraint firstItem="8ZN-eH-NfU" firstAttribute="top" secondItem="yoc-oh-eYI" secondAttribute="top" id="teT-6j-43v"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="8ZN-eH-NfU" id="E9K-3k-xTA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qMB-7R-ors" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-663.20000000000005" y="138.98050974512745"/>
+        </scene>
+        <!--Sample Button View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SampleButtonViewController" customModule="SNTPhotoInteractionAnimation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEK-XV-mkZ">
+                                <rect key="frame" x="87" y="367" width="200" height="133"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="BEK-XV-mkZ" secondAttribute="height" multiplier="2000:1333" id="8At-YU-iwW"/>
+                                    <constraint firstAttribute="width" constant="200" id="BmZ-4b-hBq"/>
+                                </constraints>
+                                <state key="normal" image="DSCF0855.jpg"/>
+                                <connections>
+                                    <action selector="imageButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ty9-SF-Lwj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BEK-XV-mkZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wlq-m8-cTN"/>
+                            <constraint firstItem="BEK-XV-mkZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="gPv-KK-Yy1"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="105" y="139"/>
+        </scene>
+        <!--Display Image View Controller-->
+        <scene sceneID="T0J-Ar-ClX">
+            <objects>
+                <viewController storyboardIdentifier="DisplayImageViewController" modalPresentationStyle="overCurrentContext" id="vBQ-tz-72t" customClass="DisplayImageViewController" customModule="SNTPhotoInteractionAnimation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yKW-LP-inc"/>
+                        <viewControllerLayoutGuide type="bottom" id="m21-nY-Ybe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Fv-tm-iCa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b58-4z-FZk" userLabel="Overlay View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUz-WB-Nx8">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="4HD-Us-gNh"/>
+                                        </constraints>
+                                        <items>
+                                            <navigationItem id="R9e-ZE-jzo">
+                                                <barButtonItem key="leftBarButtonItem" title="Close" id="mFE-Mo-fs1">
+                                                    <connections>
+                                                        <action selector="dismissButtonDisPress:" destination="vBQ-tz-72t" id="KIW-E0-im0"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="GUz-WB-Nx8" secondAttribute="trailing" id="8ou-MJ-mug"/>
+                                    <constraint firstItem="GUz-WB-Nx8" firstAttribute="leading" secondItem="b58-4z-FZk" secondAttribute="leading" id="Pqx-Y4-fNA"/>
+                                    <constraint firstItem="GUz-WB-Nx8" firstAttribute="top" secondItem="b58-4z-FZk" secondAttribute="top" id="WCQ-Er-fr2"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlT-0o-bkC">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="RCS-Bz-EPu" appends="YES" id="wut-1t-eUQ"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="jlT-0o-bkC" firstAttribute="top" secondItem="GUz-WB-Nx8" secondAttribute="bottom" id="AcO-Vc-bI6"/>
+                            <constraint firstItem="jlT-0o-bkC" firstAttribute="leading" secondItem="9Fv-tm-iCa" secondAttribute="leading" id="G3T-7c-SOx"/>
+                            <constraint firstItem="b58-4z-FZk" firstAttribute="leading" secondItem="9Fv-tm-iCa" secondAttribute="leading" id="KqW-r0-7Jb"/>
+                            <constraint firstItem="b58-4z-FZk" firstAttribute="top" secondItem="9Fv-tm-iCa" secondAttribute="top" id="QEG-mK-8rS"/>
+                            <constraint firstItem="m21-nY-Ybe" firstAttribute="top" secondItem="jlT-0o-bkC" secondAttribute="bottom" id="ZYI-9L-GNj"/>
+                            <constraint firstItem="m21-nY-Ybe" firstAttribute="top" secondItem="b58-4z-FZk" secondAttribute="bottom" id="nhP-yd-QtS"/>
+                            <constraint firstAttribute="trailing" secondItem="jlT-0o-bkC" secondAttribute="trailing" id="qoL-Ca-Ble"/>
+                            <constraint firstAttribute="trailing" secondItem="b58-4z-FZk" secondAttribute="trailing" id="ujr-3j-fg4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="jlT-0o-bkC" id="Oxf-x5-Cs8"/>
+                        <outlet property="overlayView" destination="b58-4z-FZk" id="10c-G3-Rmt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="whU-H6-CFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="RCS-Bz-EPu">
+                    <connections>
+                        <action selector="handlePanGesture:" destination="vBQ-tz-72t" id="8vo-zG-Yut"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1650" y="160"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="DSCF0855.jpg" width="2000" height="1333"/>
+    </resources>
+</document>
