@@ -62,7 +62,7 @@ class DisplayImageViewController: UIViewController {
     // MARK: - Action
     
     @IBAction func dismissButtonDisPress(_ sender: UIView) {
-        dismissWithAnimation()
+        dismiss(animated: true)
     }
     
     @IBAction func handlePanGesture(_ sender: UIPanGestureRecognizer) {
@@ -86,9 +86,9 @@ class DisplayImageViewController: UIViewController {
             
         case .ended, .cancelled:
             if isReachedDismissPosition(curPosition: touchPoint) {
-                dismissWithAnimation()
+                dismiss(animated: true)
             } else {
-                fadeToActualPositionAnimation()
+                moveToActualPositionAnimation()
             }
             
         default: break
@@ -109,10 +109,10 @@ class DisplayImageViewController: UIViewController {
     
     func fadeInAnimation() {
         setupInterfaceBeforeFadeAnimation()
-        fadeToActualPositionAnimation()
+        moveToActualPositionAnimation()
     }
     
-    func fadeToActualPositionAnimation() {
+    func moveToActualPositionAnimation() {
         UIView.animate(withDuration: duration, animations: {
             self.setupInterfaceAfterFadeAnimation()
         })
@@ -170,12 +170,17 @@ class DisplayImageViewController: UIViewController {
         return isOverYPosition || isOverXPosition
     }
     
-    private func dismissWithAnimation() {
-        fadeOutAnimation(completionHandler: {
-            self.dismiss(animated: false, completion: nil)
-        })
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        if flag {
+            fadeOutAnimation(completionHandler: {
+                super.dismiss(animated: false, completion: completion)
+            })
+        } else {
+            super.dismiss(animated: false, completion: completion)
+        }
+        
     }
-    
+
     enum OverlayViewAlpha: CGFloat {
         case begin = 0
         case prepare = 0.7
