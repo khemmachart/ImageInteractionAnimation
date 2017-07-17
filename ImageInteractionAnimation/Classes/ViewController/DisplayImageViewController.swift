@@ -41,8 +41,7 @@ class DisplayImageViewController: UIViewController {
     }()
     
     var initialTouchPoint = CGPoint(x: 0,y: 0)
-    let dismissXPosition: CGFloat = 80
-    let dismissYPosition: CGFloat = 125
+    let dragingDismissDistance: CGFloat = 80
     
     let duration: TimeInterval = 0.25
     var sender: UIView?
@@ -166,8 +165,8 @@ class DisplayImageViewController: UIViewController {
     // MARK: - Utils
     
     private func isReachedDismissPosition(curPosition: CGPoint) -> Bool {
-        let isOverYPosition = abs(curPosition.y - initialTouchPoint.y) > dismissYPosition
-        let isOverXPosition = abs(curPosition.x - initialTouchPoint.x) > dismissXPosition
+        let isOverYPosition = abs(curPosition.y - initialTouchPoint.y) > dragingDismissDistance
+        let isOverXPosition = abs(curPosition.x - initialTouchPoint.x) > dragingDismissDistance
         return isOverYPosition || isOverXPosition
     }
     
