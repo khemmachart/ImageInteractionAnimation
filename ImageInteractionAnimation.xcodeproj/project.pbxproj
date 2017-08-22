@@ -17,6 +17,7 @@
 		9FCFB8B71F18EAD000E5BA37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCFB8AD1F18EAD000E5BA37 /* AppDelegate.swift */; };
 		9FCFB8B81F18EAD000E5BA37 /* DSCF0855.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FCFB8AE1F18EAD000E5BA37 /* DSCF0855.jpg */; };
 		9FCFB8B91F18EAD000E5BA37 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FCFB8AF1F18EAD000E5BA37 /* Info.plist */; };
+		9FDE84881F4CB13E00B4DCD2 /* UIView+Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDE84871F4CB13E00B4DCD2 /* UIView+Origin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		9FCFB8AD1F18EAD000E5BA37 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FCFB8AE1F18EAD000E5BA37 /* DSCF0855.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DSCF0855.jpg; sourceTree = "<group>"; };
 		9FCFB8AF1F18EAD000E5BA37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FDE84871F4CB13E00B4DCD2 /* UIView+Origin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Origin.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		9FCFB89F1F18EAD000E5BA37 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9FDE84861F4CB13000B4DCD2 /* Extension */,
 				9FCFB8A01F18EAD000E5BA37 /* View */,
 				9FCFB8A21F18EAD000E5BA37 /* ViewController */,
 			);
@@ -115,6 +118,14 @@
 				9FCFB8AF1F18EAD000E5BA37 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9FDE84861F4CB13000B4DCD2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9FDE84871F4CB13E00B4DCD2 /* UIView+Origin.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 			files = (
 				9FCFB8B11F18EAD000E5BA37 /* DisplayImageViewController.swift in Sources */,
 				9FCFB8B01F18EAD000E5BA37 /* SampleTableViewCell.swift in Sources */,
+				9FDE84881F4CB13E00B4DCD2 /* UIView+Origin.swift in Sources */,
 				9FCFB8B21F18EAD000E5BA37 /* SampleButtonViewController.swift in Sources */,
 				9FCFB8B71F18EAD000E5BA37 /* AppDelegate.swift in Sources */,
 				9FCFB8B31F18EAD000E5BA37 /* SampleTableViewController.swift in Sources */,
@@ -357,6 +369,7 @@
 				9FCFB8941F18E99B00E5BA37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

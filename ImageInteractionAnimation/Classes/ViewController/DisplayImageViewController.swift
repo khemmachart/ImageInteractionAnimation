@@ -31,7 +31,7 @@ class DisplayImageViewController: UIViewController {
     
     private lazy var senderFrame: CGRect = {
         if let sender = self.sender {
-            let actualSenderPosition = self.getActualOrigin(from: sender)
+            let actualSenderPosition = sender.getActualOrigin()
             return CGRect(x: actualSenderPosition.x,
                           y: actualSenderPosition.y,
                           width: sender.frame.width,
@@ -138,30 +138,7 @@ class DisplayImageViewController: UIViewController {
         setupInterfaceBeforeFadeAnimation()
         view.addSubview(displayImageView)
     }
-    
-    private func getActualOrigin(from sender: UIView?) -> CGPoint {
-        
-        // Base case
-        guard let  sender = sender else {
-            return CGPoint.zero
-        }
-        
-        // Call recursive to get the sender actual origin
-        let superviewOrigin = getActualOrigin(from: sender.superview)
-        var senderOrigin = sender.frame.origin
-        
-        // If this view is kind off UITableViewCell, it need to minus with the table view offsets
-        if let tableViewCell = sender as? UITableViewCell,
-            let tableView = tableViewCell.superview?.superview as? UITableView {
-            senderOrigin = CGPoint(x: sender.frame.origin.x,
-                                   y: sender.frame.origin.y - tableView.contentOffset.y)
-        }
-        
-        // Return the actual origin
-        return CGPoint(x: senderOrigin.x + superviewOrigin.x,
-                       y: senderOrigin.y + superviewOrigin.y)
-    }
-    
+
     // MARK: - Utils
     
     private func isReachedDismissPosition(curPosition: CGPoint) -> Bool {
