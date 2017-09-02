@@ -10,11 +10,11 @@ import UIKit
 
 extension UIView {
     
-    func getActualOrigin() -> CGPoint {
-        return calculateActualOrigin(from: self)
+    var screenOrigin: CGPoint {
+        return calculateScreenOrigin(from: self)
     }
     
-    func calculateActualOrigin(from sender: UIView?) -> CGPoint {
+    private func calculateScreenOrigin(from sender: UIView?) -> CGPoint {
         
         // Base case
         guard let  sender = sender else {
@@ -22,7 +22,7 @@ extension UIView {
         }
         
         // Call recursive to get the sender actual origin
-        let superviewOrigin = calculateActualOrigin(from: sender.superview)
+        let superviewOrigin = calculateScreenOrigin(from: sender.superview)
         var senderOrigin = sender.frame.origin
         
         // If this view is kind off UITableViewCell, it need to minus with the table view offsets

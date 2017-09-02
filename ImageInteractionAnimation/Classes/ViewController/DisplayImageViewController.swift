@@ -31,7 +31,7 @@ class DisplayImageViewController: UIViewController {
     
     private lazy var senderFrame: CGRect = {
         if let sender = self.sender {
-            let actualSenderPosition = sender.getActualOrigin()
+            let actualSenderPosition = sender.screenOrigin
             return CGRect(x: actualSenderPosition.x,
                           y: actualSenderPosition.y,
                           width: sender.frame.width,
