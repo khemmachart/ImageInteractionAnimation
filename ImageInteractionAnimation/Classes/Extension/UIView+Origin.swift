@@ -26,10 +26,18 @@ extension UIView {
         var senderOrigin = sender.frame.origin
         
         // If this view is kind off UITableViewCell, it need to minus with the table view offsets
-        if let tableViewCell = sender as? UITableViewCell,
-            let tableView = tableViewCell.superview?.superview as? UITableView {
-            senderOrigin = CGPoint(x: sender.frame.origin.x,
-                                   y: sender.frame.origin.y - tableView.contentOffset.y)
+        if #available(iOS 11.0, *) {
+            if let tableViewCell = sender as? UITableViewCell,
+                let tableView = tableViewCell.superview as? UITableView {
+                senderOrigin = CGPoint(x: sender.frame.origin.x,
+                                       y: sender.frame.origin.y - tableView.contentOffset.y)
+            }
+        } else {
+            if let tableViewCell = sender as? UITableViewCell,
+                let tableView = tableViewCell.superview?.superview as? UITableView {
+                senderOrigin = CGPoint(x: sender.frame.origin.x,
+                                       y: sender.frame.origin.y - tableView.contentOffset.y)
+            }
         }
         
         // Return the actual origin
