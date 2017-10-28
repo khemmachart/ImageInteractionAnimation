@@ -119,7 +119,12 @@ class DisplayImageViewController: UIViewController {
     }
     
     func fadeOutAnimation(completionHandler handler: (() -> Void)? = nil) {
-        UIView.animate(withDuration: duration, animations: {
+        UIView.animate(withDuration: duration * 2,
+                       delay: 0.0,
+                       usingSpringWithDamping: 0.75,
+                       initialSpringVelocity: 1,
+                       options: [.curveEaseInOut],
+                       animations: {
             self.setupInterfaceBeforeFadeAnimation()
         }, completion: { complete in
             handler?()
