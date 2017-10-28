@@ -40,6 +40,9 @@ class DisplayImageViewController: UIViewController {
         return CGRect.zero
     }()
     
+    var presentHandler: (() -> Void)? = nil
+    var dismissHandler: (() -> Void)? = nil
+    
     var initialTouchPoint = CGPoint(x: 0,y: 0)
     let dragingDismissDistance: CGFloat = 80
     
@@ -108,6 +111,7 @@ class DisplayImageViewController: UIViewController {
     }
     
     func fadeInAnimation() {
+        presentHandler?()
         setupInterfaceBeforeFadeAnimation()
         moveToActualPositionAnimation()
     }
@@ -127,6 +131,7 @@ class DisplayImageViewController: UIViewController {
                        animations: {
             self.setupInterfaceBeforeFadeAnimation()
         }, completion: { complete in
+            self.dismissHandler?()
             handler?()
         })
     }

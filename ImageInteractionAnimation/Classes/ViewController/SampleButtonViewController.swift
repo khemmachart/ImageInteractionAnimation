@@ -9,25 +9,36 @@
 import UIKit
 
 class SampleButtonViewController: UIViewController {
+
+    @IBOutlet private weak var imageButton: UIButton!
     
     lazy var imageToShow: UIImage? = UIImage(named: "DSCF0855.jpg")
     
     // MARK: - Action
     
     @IBAction func imageButtonDidPress(_ sender: UIView) {
-        presentImageViewController(sender)
+        
+        presentImageViewController(
+            sender,
+            presentHandler: { self.imageButton.isHidden = true },
+            dismissHandler: { self.imageButton.isHidden = false })
     }
     
     // MARK: - Util
     
-    private func presentImageViewController(_ sender: UIView) {
+    private func presentImageViewController(
+        _ sender: UIView,
+        presentHandler: (() -> Void)? = nil,
+        dismissHandler: (() -> Void)? = nil) {
+
         let stroyboard = UIStoryboard(name: "Main", bundle: nil)
         let sID = "DisplayImageViewController"
         if let viewController = stroyboard.instantiateViewController(withIdentifier: sID) as? DisplayImageViewController {
             viewController.sender = sender
             viewController.image = imageToShow
+            viewController.dismissHandler = dismissHandler
+            viewController.presentHandler = presentHandler
             present(viewController, animated: false, completion: nil)
         }
-        
     }
 }
