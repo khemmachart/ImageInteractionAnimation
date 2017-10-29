@@ -9,7 +9,7 @@
 
 import UIKit
 
-class DisplayImageViewController: UIViewController {
+class InteractiveModalImageViewController: UIViewController {
     
     @IBOutlet private weak var overlayView: UIView!
     @IBOutlet private weak var containerView: UIView!
@@ -40,17 +40,17 @@ class DisplayImageViewController: UIViewController {
         return CGRect.zero
     }()
     
+    private var initialTouchPoint = CGPoint(x: 0,y: 0)
+    private let dragingDismissDistance: CGFloat = 80
+    private let duration: TimeInterval = 0.25
+
     var presentHandler: (() -> Void)? = nil
     var dismissHandler: (() -> Void)? = nil
-    
-    var initialTouchPoint = CGPoint(x: 0,y: 0)
-    let dragingDismissDistance: CGFloat = 80
-    
-    let duration: TimeInterval = 0.25
+
     var sender: UIView?
     var image: UIImage?
     
-    // MARK: - View life cycle
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,16 +59,16 @@ class DisplayImageViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fadeInAnimation()
+        animatePresentAnimation()
     }
     
     // MARK: - Action
     
-    @IBAction func dismissButtonDisPress(_ sender: UIView) {
+    @IBAction private func dismissButtonDisPress(_ sender: UIView) {
         dismiss(animated: true)
     }
     
-    @IBAction func handlePanGesture(_ sender: UIPanGestureRecognizer) {
+    @IBAction private func handlePanGesture(_ sender: UIPanGestureRecognizer) {
         let touchPoint = sender.location(in: self.view?.window)
         
         switch sender.state {
@@ -78,7 +78,7 @@ class DisplayImageViewController: UIViewController {
             
         case .changed:
             if overlayView.alpha > OverlayViewAlpha.prepare.rawValue {
-                prepareFadeOutAnimation()
+                setupInterfaceForDismissAnimationPreparation()
             }
             let yPosition = touchPoint.y - initialTouchPoint.y
             let xPosition = touchPoint.x - initialTouchPoint.x
@@ -91,62 +91,63 @@ class DisplayImageViewController: UIViewController {
             if isReachedDismissPosition(curPosition: touchPoint) {
                 dismiss(animated: true)
             } else {
-                moveToActualPositionAnimation()
+                presentAnimation()
             }
             
-        default: break
+        default:
+            break
         }
     }
     
     // MARK: - Interface
+
+    private func setupInterface() {
+        setupInterfaceForPresentAnimation()
+        view.addSubview(displayImageView)
+    }
     
-    func setupInterfaceBeforeFadeAnimation() {
+    private func setupInterfaceForPresentAnimation() {
         overlayView.alpha = OverlayViewAlpha.begin.rawValue
         displayImageView.frame = senderFrame
     }
     
-    func setupInterfaceAfterFadeAnimation() {
+    private func setupInterfaceForDismissAnimation() {
         overlayView.alpha = OverlayViewAlpha.finish.rawValue
         displayImageView.frame = actualFrame
     }
+
+    private func setupInterfaceForDismissAnimationPreparation() {
+        UIView.animate(withDuration: duration, animations: {
+            self.overlayView.alpha = OverlayViewAlpha.prepare.rawValue
+        })
+    }
+
+    // MARK: - Animation
     
-    func fadeInAnimation() {
+    private func animatePresentAnimation() {
         presentHandler?()
-        setupInterfaceBeforeFadeAnimation()
-        moveToActualPositionAnimation()
+        setupInterfaceForPresentAnimation()
+        presentAnimation()
     }
     
-    func moveToActualPositionAnimation() {
+    private func presentAnimation() {
         UIView.animate(withDuration: duration, animations: {
-            self.setupInterfaceAfterFadeAnimation()
+            self.setupInterfaceForDismissAnimation()
         })
     }
     
-    func fadeOutAnimation(completionHandler handler: (() -> Void)? = nil) {
+    private func dismissAnimation(completionHandler handler: (() -> Void)? = nil) {
         UIView.animate(withDuration: duration * 2,
                        delay: 0.0,
                        usingSpringWithDamping: 0.75,
                        initialSpringVelocity: 1,
                        options: [.curveEaseInOut],
                        animations: {
-            self.setupInterfaceBeforeFadeAnimation()
+            self.setupInterfaceForPresentAnimation()
         }, completion: { complete in
             self.dismissHandler?()
             handler?()
         })
-    }
-    
-    func prepareFadeOutAnimation() {
-        UIView.animate(withDuration: duration, animations: {
-            self.overlayView.alpha = OverlayViewAlpha.prepare.rawValue
-        })
-    }
-    
-    // MARK: - Interface
-    
-    private func setupInterface() {
-        setupInterfaceBeforeFadeAnimation()
-        view.addSubview(displayImageView)
     }
 
     // MARK: - Utils
@@ -159,7 +160,7 @@ class DisplayImageViewController: UIViewController {
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         if flag {
-            fadeOutAnimation(completionHandler: {
+            dismissAnimation(completionHandler: {
                 super.dismiss(animated: false, completion: completion)
             })
         } else {
@@ -168,7 +169,7 @@ class DisplayImageViewController: UIViewController {
         
     }
 
-    enum OverlayViewAlpha: CGFloat {
+    private enum OverlayViewAlpha: CGFloat {
         case begin = 0
         case prepare = 0.7
         case finish = 0.9

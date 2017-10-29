@@ -12,12 +12,9 @@ class SampleButtonViewController: UIViewController {
 
     @IBOutlet private weak var imageButton: UIButton!
     
-    lazy var imageToShow: UIImage? = UIImage(named: "DSCF0855.jpg")
-    
     // MARK: - Action
     
     @IBAction func imageButtonDidPress(_ sender: UIView) {
-        
         presentImageViewController(
             sender,
             presentHandler: { self.imageButton.isHidden = true },
@@ -32,10 +29,10 @@ class SampleButtonViewController: UIViewController {
         dismissHandler: (() -> Void)? = nil) {
 
         let stroyboard = UIStoryboard(name: "Main", bundle: nil)
-        let sID = "DisplayImageViewController"
-        if let viewController = stroyboard.instantiateViewController(withIdentifier: sID) as? DisplayImageViewController {
+        let sID = "InteractiveModalImageViewController"
+        if let viewController = stroyboard.instantiateViewController(withIdentifier: sID) as? InteractiveModalImageViewController {
             viewController.sender = sender
-            viewController.image = imageToShow
+            viewController.image = imageButton.imageView?.image
             viewController.dismissHandler = dismissHandler
             viewController.presentHandler = presentHandler
             present(viewController, animated: false, completion: nil)

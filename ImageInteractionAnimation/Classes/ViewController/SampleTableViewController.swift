@@ -30,8 +30,8 @@ class SampleTableViewController: UIViewController {
     
     func presentImageViewController(_ sender: UIView, with image: UIImage) {
         let stroyboard = UIStoryboard(name: "Main", bundle: nil)
-        let sID = "DisplayImageViewController"
-        if let viewController = stroyboard.instantiateViewController(withIdentifier: sID) as? DisplayImageViewController {
+        let sID = "InteractiveModalImageViewController"
+        if let viewController = stroyboard.instantiateViewController(withIdentifier: sID) as? InteractiveModalImageViewController {
             viewController.sender = sender
             viewController.image = image
             present(viewController, animated: false, completion: nil)
