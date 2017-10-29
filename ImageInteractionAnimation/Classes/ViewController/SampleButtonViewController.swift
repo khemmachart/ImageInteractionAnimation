@@ -31,6 +31,7 @@ class SampleButtonViewController: UIViewController {
         let stroyboard = UIStoryboard(name: "Main", bundle: nil)
         let sID = "InteractiveModalImageViewController"
         if let viewController = stroyboard.instantiateViewController(withIdentifier: sID) as? InteractiveModalImageViewController {
+            viewController.superview = view
             viewController.sender = sender
             viewController.image = imageButton.imageView?.image
             viewController.dismissHandler = dismissHandler

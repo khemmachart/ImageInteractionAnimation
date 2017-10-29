@@ -47,6 +47,7 @@ class InteractiveModalImageViewController: UIViewController {
     var presentHandler: (() -> Void)? = nil
     var dismissHandler: (() -> Void)? = nil
 
+    var superview: UIView?
     var sender: UIView?
     var image: UIImage?
     
@@ -109,11 +110,13 @@ class InteractiveModalImageViewController: UIViewController {
     private func setupInterfaceForPresentAnimation() {
         overlayView.alpha = OverlayViewAlpha.begin.rawValue
         displayImageView.frame = senderFrame
+        superview?.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
     
     private func setupInterfaceForDismissAnimation() {
         overlayView.alpha = OverlayViewAlpha.finish.rawValue
         displayImageView.frame = actualFrame
+        superview?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
     }
 
     private func setupInterfaceForDismissAnimationPreparation() {
@@ -171,7 +174,7 @@ class InteractiveModalImageViewController: UIViewController {
 
     private enum OverlayViewAlpha: CGFloat {
         case begin = 0
-        case prepare = 0.7
-        case finish = 0.9
+        case prepare = 0.75
+        case finish = 1
     }
 }
