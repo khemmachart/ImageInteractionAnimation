@@ -13,7 +13,8 @@ class InteractiveModalImageViewController: UIViewController {
     
     @IBOutlet private weak var overlayView: UIView!
     @IBOutlet private weak var containerView: UIView!
-    
+    @IBOutlet private weak var dismissButton: UIButton!
+
     private lazy var displayImageView: UIImageView = {
         let imageView = UIImageView(frame: self.containerView.bounds)
         imageView.contentMode = .scaleAspectFit
@@ -110,17 +111,20 @@ class InteractiveModalImageViewController: UIViewController {
     private func setupInterfaceForPresentAnimation() {
         overlayView.alpha = OverlayViewAlpha.begin.rawValue
         displayImageView.frame = senderFrame
+        dismissButton.isHidden = true
         superview?.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
     
     private func setupInterfaceForDismissAnimation() {
         overlayView.alpha = OverlayViewAlpha.finish.rawValue
         displayImageView.frame = actualFrame
+        dismissButton.isHidden = false
         superview?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
     }
 
     private func setupInterfaceForDismissAnimationPreparation() {
         UIView.animate(withDuration: duration, animations: {
+            self.dismissButton.isHidden = true
             self.overlayView.alpha = OverlayViewAlpha.prepare.rawValue
         })
     }
