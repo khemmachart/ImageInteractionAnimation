@@ -10,7 +10,7 @@ import UIKit
 
 protocol SampleTableViewCellDelegate: class {
     
-    func imageButtonDidPress(_ sender: UIView, with image: UIImage)
+    func presentImageFrom(imageView: UIImageView?, atCell cell: SampleTableViewCell)
 }
 
 class SampleTableViewCell: UITableViewCell {
@@ -19,14 +19,8 @@ class SampleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imageButton: UIButton!
     
-    internal var myImage: UIImage! {
-        didSet {
-            self.imageButton.setImage(myImage, for: .normal)
-        }
-    }
-    
     @IBAction func imageButtonDidPress(_ sender: UIButton) {
-        delegate?.imageButtonDidPress(sender, with: myImage)
+        delegate?.presentImageFrom(imageView: sender.imageView, atCell: self)
     }
     
 }

@@ -14,9 +14,9 @@ class SampleButtonViewController: UIViewController {
     
     // MARK: - Action
     
-    @IBAction func imageButtonDidPress(_ sender: UIView) {
+    @IBAction func imageButtonDidPress(_ sender: UIButton) {
         presentImageViewController(
-            sender,
+            sender.imageView,
             presentHandler: { self.imageButton.isHidden = true },
             dismissHandler: { self.imageButton.isHidden = false })
     }
@@ -24,7 +24,7 @@ class SampleButtonViewController: UIViewController {
     // MARK: - Util
     
     private func presentImageViewController(
-        _ sender: UIView,
+        _ sender: UIImageView?,
         presentHandler: (() -> Void)? = nil,
         dismissHandler: (() -> Void)? = nil) {
 
@@ -33,7 +33,7 @@ class SampleButtonViewController: UIViewController {
         if let viewController = stroyboard.instantiateViewController(withIdentifier: sID) as? InteractiveModalImageViewController {
             viewController.superview = view
             viewController.sender = sender
-            viewController.image = imageButton.imageView?.image
+            viewController.image = sender?.image
             viewController.dismissHandler = dismissHandler
             viewController.presentHandler = presentHandler
             present(viewController, animated: false, completion: nil)
