@@ -132,34 +132,31 @@
                         <subviews>
                             <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b58-4z-FZk" userLabel="Overlay View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUz-WB-Nx8">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="4HD-Us-gNh"/>
-                                        </constraints>
-                                        <items>
-                                            <navigationItem id="R9e-ZE-jzo">
-                                                <barButtonItem key="leftBarButtonItem" title="Close" id="mFE-Mo-fs1">
-                                                    <connections>
-                                                        <action selector="dismissButtonDisPress:" destination="vBQ-tz-72t" id="KIW-E0-im0"/>
-                                                    </connections>
-                                                </barButtonItem>
-                                            </navigationItem>
-                                        </items>
-                                    </navigationBar>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="GUz-WB-Nx8" secondAttribute="trailing" id="8ou-MJ-mug"/>
-                                    <constraint firstItem="GUz-WB-Nx8" firstAttribute="leading" secondItem="b58-4z-FZk" secondAttribute="leading" id="Pqx-Y4-fNA"/>
-                                    <constraint firstItem="GUz-WB-Nx8" firstAttribute="top" secondItem="b58-4z-FZk" secondAttribute="top" constant="20" id="WCQ-Er-fr2"/>
-                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlT-0o-bkC">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jg-7H-bC8">
+                                        <rect key="frame" x="8" y="8" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="849-U7-VVB"/>
+                                            <constraint firstAttribute="width" constant="44" id="hUc-fO-0pI"/>
+                                        </constraints>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissButtonDisPress:" destination="vBQ-tz-72t" eventType="touchUpInside" id="0gI-5f-a4I"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="9jg-7H-bC8" firstAttribute="top" secondItem="jlT-0o-bkC" secondAttribute="top" constant="8" id="SJM-R4-s6T"/>
+                                    <constraint firstItem="9jg-7H-bC8" firstAttribute="leading" secondItem="jlT-0o-bkC" secondAttribute="leading" constant="8" id="WTo-Fz-hBU"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="RCS-Bz-EPu" appends="YES" id="wut-1t-eUQ"/>
                                 </connections>
@@ -168,11 +165,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="jlT-0o-bkC" firstAttribute="top" secondItem="GUz-WB-Nx8" secondAttribute="bottom" id="AcO-Vc-bI6"/>
                             <constraint firstItem="jlT-0o-bkC" firstAttribute="leading" secondItem="9Fv-tm-iCa" secondAttribute="leading" id="G3T-7c-SOx"/>
                             <constraint firstItem="b58-4z-FZk" firstAttribute="leading" secondItem="9Fv-tm-iCa" secondAttribute="leading" id="KqW-r0-7Jb"/>
                             <constraint firstItem="b58-4z-FZk" firstAttribute="top" secondItem="9Fv-tm-iCa" secondAttribute="top" id="QEG-mK-8rS"/>
                             <constraint firstItem="m21-nY-Ybe" firstAttribute="top" secondItem="jlT-0o-bkC" secondAttribute="bottom" id="ZYI-9L-GNj"/>
+                            <constraint firstItem="jlT-0o-bkC" firstAttribute="top" secondItem="9Fv-tm-iCa" secondAttribute="top" id="hcK-rx-iw9"/>
                             <constraint firstItem="m21-nY-Ybe" firstAttribute="top" secondItem="b58-4z-FZk" secondAttribute="bottom" id="nhP-yd-QtS"/>
                             <constraint firstAttribute="trailing" secondItem="jlT-0o-bkC" secondAttribute="trailing" id="qoL-Ca-Ble"/>
                             <constraint firstAttribute="trailing" secondItem="b58-4z-FZk" secondAttribute="trailing" id="ujr-3j-fg4"/>
@@ -190,7 +187,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1650" y="160"/>
+            <point key="canvasLocation" x="1648.8" y="159.67016491754123"/>
         </scene>
     </scenes>
     <resources>
