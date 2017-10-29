@@ -10,8 +10,6 @@ import UIKit
 
 class SampleTableViewController: UIViewController {
     
-    lazy var imageName: String = "DSCF0855.jpg"
-    
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - View life cycle
@@ -28,12 +26,19 @@ class SampleTableViewController: UIViewController {
     
     // MARK: - Util
     
-    func presentImageViewController(_ sender: UIView, with image: UIImage) {
+    fileprivate func presentImageViewController(
+        _ sender: UIImageView?,
+        presentHandler: (() -> Void)? = nil,
+        dismissHandler: (() -> Void)? = nil) {
+        
         let stroyboard = UIStoryboard(name: "Main", bundle: nil)
         let sID = "InteractiveModalImageViewController"
         if let viewController = stroyboard.instantiateViewController(withIdentifier: sID) as? InteractiveModalImageViewController {
+            viewController.superview = view
             viewController.sender = sender
-            viewController.image = image
+            viewController.image = sender?.image
+            viewController.dismissHandler = dismissHandler
+            viewController.presentHandler = presentHandler
             present(viewController, animated: false, completion: nil)
         }
     }
@@ -47,7 +52,6 @@ extension SampleTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SampleTableViewCell", for: indexPath) as? SampleTableViewCell {
-            cell.myImage = UIImage(named: imageName)
             cell.delegate = self
             return cell
         }
@@ -57,7 +61,10 @@ extension SampleTableViewController: UITableViewDataSource {
 
 extension SampleTableViewController: SampleTableViewCellDelegate {
     
-    func imageButtonDidPress(_ sender: UIView, with image: UIImage) {
-        presentImageViewController(sender, with: image)
+    func presentImageFrom(imageView: UIImageView?, atCell cell: SampleTableViewCell) {
+        presentImageViewController(
+            imageView,
+            presentHandler: { cell.imageButton.isHidden = true },
+            dismissHandler: { cell.imageButton.isHidden = false })
     }
 }
