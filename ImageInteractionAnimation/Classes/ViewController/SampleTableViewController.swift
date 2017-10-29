@@ -1,6 +1,6 @@
 //
 //  SampleTableViewController.swift
-//  SNTPhotoInteractionAnimation
+//  InteractiveModalImageViewController
 //
 //  Created by KHUN NINE on 7/14/17.
 //  Copyright © 2017 Santora Nakama. All rights reserved.

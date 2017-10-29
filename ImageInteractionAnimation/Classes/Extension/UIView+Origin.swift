@@ -1,6 +1,6 @@
 //
 //  UIView+Origin.swift
-//  ImageInteractionAnimation
+//  InteractiveModalImageViewController
 //
 //  Created by KHUN NINE on 8/23/17.
 //  Copyright © 2017 Khemmachart Chutapetch. All rights reserved.
