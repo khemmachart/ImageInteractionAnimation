@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  SNTPhotoInteractionAnimation
+//  SampleButtonViewController.swift
+//  InteractiveModalImageViewController
 //
 //  Created by KHUN NINE on 7/5/17.
 //  Copyright © 2017 Santora Nakama. All rights reserved.
